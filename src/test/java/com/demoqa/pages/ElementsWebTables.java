@@ -37,9 +37,6 @@ public class ElementsWebTables extends BasePage{
     @FindBy(id="submit")
     public WebElement submit;
 
-    @FindBy(xpath = "//*[@class='rt-resizable-header-content']")
-    public List<WebElement> listOfColumn;
-
     public void enterCredentials(String fName, String lName, String email, String ageData, String salaryData, String departmentData){
         firstName.sendKeys(fName);
         lastName.sendKeys(lName);
@@ -66,10 +63,8 @@ public class ElementsWebTables extends BasePage{
     }
 
     public int getColumnNumber(String columnName){
-        WebElement column = Driver.get().findElement(By.xpath("//*[text()='First Name']//*[text()='"+columnName+"']"));
-        return listOfColumn.indexOf(column);
 
-     //   int columnNumber = 0;
+        int columnNumber = 0;
         /*
         switch (column.toLowerCase()) {
             case "firstname":
@@ -95,7 +90,7 @@ public class ElementsWebTables extends BasePage{
         }
          */
 
-      /*  columnNumber = switch (columnName.toLowerCase()) {
+       columnNumber = switch (columnName.toLowerCase()) {
             case "firstname" -> 1;
             case "lastname" -> 2;
             case "age" -> 3;
@@ -105,8 +100,6 @@ public class ElementsWebTables extends BasePage{
             default -> 0;
         };
         return columnNumber;
-        */
-
     }
 
     public List<String> getListOfColumn(String column){
