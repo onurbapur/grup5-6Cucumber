@@ -1,7 +1,7 @@
 #Test1: Add new row
-# Test2: Delete a row
-# Test3: Edit a row
-# Test4: Get text from a cell ex: kierra's email
+# Test2: Delete a row - @TC_WT_Delete_001
+# Test3: Edit a row - @TC_WT_Edit_001
+# Test4: Get text from a cell ex: kierra's email - @TC_WT_GetTextOfCell_001
 
 @TS_WT_001
 Feature: Web Tables Tests
@@ -47,7 +47,7 @@ Feature: Web Tables Tests
     When Click Delete Button on a row by email "falancaAhmet@falanca.com"
     Then Verify that the row by email "falancaAhmet@falanca.com" is deleted
 
-  @wip
+  @TC_WT_GetTextOfCell_001 @wip
   Scenario: Get text of any cell
     When Get text from "Kierra" 's email
     Then Verify that the text you get equals "kierra@example.com"
