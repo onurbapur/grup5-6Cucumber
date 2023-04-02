@@ -34,7 +34,7 @@ Feature: Web Tables Tests
     And Click Submit Button
     Then Verify that Salary is "15000" on a row by email "alden@example.com"
 
-  @wip
+
   Scenario: Add a new record and delete it
     When Click to Add Button for new record
     And Enter the credentials of person
@@ -46,3 +46,9 @@ Feature: Web Tables Tests
       | department | SDET-QA                  |
     When Click Delete Button on a row by email "falancaAhmet@falanca.com"
     Then Verify that the row by email "falancaAhmet@falanca.com" is deleted
+
+  @wip
+  Scenario: Get text of any cell
+    When Get text from "Kierra" 's email
+    Then Verify that the text you get equals "kierra@example.com"
+

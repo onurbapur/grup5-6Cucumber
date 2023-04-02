@@ -91,8 +91,8 @@ public class ElementsWebTables extends BasePage{
          */
 
        columnNumber = switch (columnName.toLowerCase()) {
-            case "firstname" -> 1;
-            case "lastname" -> 2;
+            case "first name" -> 1;
+            case "last name" -> 2;
             case "age" -> 3;
             case "email" -> 4;
             case "salary" -> 5;
@@ -111,6 +111,13 @@ public class ElementsWebTables extends BasePage{
         }
         return list;
     }
-
+    public String emailByName;
+    public void setEmailByName(String name) {
+        for (int i = 1; i < 11; i++) {
+            if (getTextOfCell(i, getColumnNumber("First Name")).equals(name)){
+                emailByName = getTextOfCell(i, getColumnNumber("email"));
+            }
+        }
+    }
 
 }

@@ -30,6 +30,7 @@ public class Task05_Elements_WebTables {
     }
     @And("Enter the credentials of person")
     public void enterTheCredentialsOfPerson(Map<String, String> dataMap) {
+        System.out.println("dataMap = " + dataMap);
         BrowserUtils.waitFor(2);
         elementsWebTables.enterCredentials(
                 dataMap.get("firstName"), dataMap.get("lastName"), dataMap.get("email"),
@@ -89,4 +90,13 @@ public class Task05_Elements_WebTables {
         Assert.assertEquals(expectedSalary, actualSalary);
     }
 
+    @When("Get text from {string} 's email")
+    public void getTextFromSEmail(String name) {
+        elementsWebTables.setEmailByName(name);
+    }
+
+    @Then("Verify that the text you get equals {string}")
+    public void verifyThatTheTextYouGetEquals(String expectedEmail) {
+       Assert.assertEquals(expectedEmail, elementsWebTables.emailByName);
+    }
 }
