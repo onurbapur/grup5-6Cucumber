@@ -6,7 +6,7 @@
 @TS_WT_001
 Feature: Web Tables Tests
 
-  Background:
+  Background: Go to Web Tables in Elements
     Given Navigate to Web Site
     And Go to Web Tables in Elements
 
@@ -47,7 +47,7 @@ Feature: Web Tables Tests
     When Click Delete Button on a row by email "falancaAhmet@falanca.com"
     Then Verify that the row by email "falancaAhmet@falanca.com" is deleted
 
-  @TC_WT_GetTextOfCell_001 @wip
+  @TC_WT_GetTextOfCell_001
   Scenario: Get text of any cell
     When Get text from "Kierra" 's email
     Then Verify that the text you get equals "kierra@example.com"

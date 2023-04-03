@@ -1,14 +1,18 @@
 package com.demoqa.pages;
 
 import com.demoqa.utilities.Driver;
+import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ElementsWebTables extends BasePage{
+
+    Faker faker = new Faker();
 
     @FindBy(xpath = "//span[text()='Web Tables']/..")
     public WebElement webTables;
@@ -36,6 +40,12 @@ public class ElementsWebTables extends BasePage{
 
     @FindBy(id="submit")
     public WebElement submit;
+
+    @FindBy(xpath = "//*[@aria-label='rows per page']")
+    public WebElement selectRows;
+
+    @FindBy(xpath = "//*[@class='rt-tbody']/div")
+    public List<WebElement> listOfRows;
 
     public void enterCredentials(String fName, String lName, String email, String ageData, String salaryData, String departmentData){
         firstName.sendKeys(fName);
@@ -66,10 +76,12 @@ public class ElementsWebTables extends BasePage{
 
         int columnNumber = 0;
         /*
-        switch (column.toLowerCase()) {
+        switch (columnName.toLowerCase()) {
+            case "first name":
             case "firstname":
                 columnNumber = 1;
                 break;
+            case "last name":
             case "lastname":
                 columnNumber = 2;
                 break;
@@ -89,7 +101,7 @@ public class ElementsWebTables extends BasePage{
                 columnNumber = 0;
         }
          */
-
+/*
        columnNumber = switch (columnName.toLowerCase()) {
             case "first name" -> 1;
             case "last name" -> 2;
@@ -98,7 +110,18 @@ public class ElementsWebTables extends BasePage{
             case "salary" -> 5;
             case "department" -> 6;
             default -> 0;
+        };*/
+
+         columnNumber = switch (columnName.toLowerCase()) {
+            case "first name", "firstname" -> 1;
+            case "last name", "lastname" -> 2;
+            case "age" -> 3;
+            case "email" -> 4;
+            case "salary" -> 5;
+            case "department" -> 6;
+            default -> 0;
         };
+
         return columnNumber;
     }
 
@@ -118,6 +141,18 @@ public class ElementsWebTables extends BasePage{
                 emailByName = getTextOfCell(i, getColumnNumber("email"));
             }
         }
+    }
+    public void addNewRowsByJava(int numberNewRecord) {
+        for (int i = 0; i < numberNewRecord; i++) {
+        addBtn.click();
+        enterCredentials(faker.name().firstName(), faker.name().lastName(),
+                    faker.internet().emailAddress(),""+faker.number().numberBetween(21, 65),
+                    faker.number().digits(5), faker.company().buzzword());
+        }
+    }
+    public void selectValueOfRows(int value) {
+        Select numberOfRows = new Select(selectRows);
+        numberOfRows.selectByValue(String.valueOf(value));
     }
 
 }

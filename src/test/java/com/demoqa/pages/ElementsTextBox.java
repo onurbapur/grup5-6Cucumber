@@ -26,9 +26,7 @@ public class ElementsTextBox extends BasePage{
     public void enterCredentials
             (String name, String email, String currAd, String perAd){
         fullname.sendKeys(name);
-        if (email==null){
-            email="";
-        }
+
         userEmail.sendKeys(email);
         currentAddress.sendKeys(currAd);
         permanentAddress.sendKeys(perAd);

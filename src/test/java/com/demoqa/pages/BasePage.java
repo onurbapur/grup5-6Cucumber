@@ -18,7 +18,6 @@ public abstract class BasePage {
     @FindBy(xpath = "//footer//span")
     public WebElement footer;
 
-
     public String getCurUrl(){
         return Driver.get().getCurrentUrl();
     }

@@ -1,12 +1,12 @@
 #Test1: Add new row
-# Test2: Delete a row
-# Test3: Edit a row
-# Test4: Get text from a cell ex: kierra's email
+# Test2: Delete a row - @TC_WT_Delete_001
+# Test3: Edit a row - @TC_WT_Edit_001
+# Test4: Get text from a cell ex: kierra's email - @TC_WT_GetTextOfCell_001
 
 @TS_WT_001
 Feature: Web Tables Tests
 
-  Background:
+  Background: Go to Web Tables in Elements
     Given Navigate to Web Site
     And Go to Web Tables in Elements
 
@@ -34,7 +34,7 @@ Feature: Web Tables Tests
     And Click Submit Button
     Then Verify that Salary is "15000" on a row by email "alden@example.com"
 
-  @wip
+
   Scenario: Add a new record and delete it
     When Click to Add Button for new record
     And Enter the credentials of person
@@ -46,3 +46,9 @@ Feature: Web Tables Tests
       | department | SDET-QA                  |
     When Click Delete Button on a row by email "falancaAhmet@falanca.com"
     Then Verify that the row by email "falancaAhmet@falanca.com" is deleted
+
+  @TC_WT_GetTextOfCell_001
+  Scenario: Get text of any cell
+    When Get text from "Kierra" 's email
+    Then Verify that the text you get equals "kierra@example.com"
+

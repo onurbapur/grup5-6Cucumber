@@ -23,6 +23,7 @@ public class HomePage extends BasePage{
 
     @FindBy(xpath = "//div[@class='category-cards']/div[6]")
     public WebElement bookStoreApp;
+
     @FindBy(xpath = "//div[@class='category-cards']/div[1]")
     public WebElement elements;
 
